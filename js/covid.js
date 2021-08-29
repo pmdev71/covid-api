@@ -14,7 +14,7 @@ viewCountry = (countrys, globaldata) => {
                     <h4> New Death  : ${globaldata.NewDeaths} </h4>
                     <h4> Total Confirmed  : ${globaldata.TotalConfirmed} </h4>
                     <h4> Total Death  : ${globaldata.TotalDeaths} </h4>
-                    <h4> Date  : ${globaldata.Date}`;
+                    <h4> Date  : ${globaldata.Date.slice(0, 10)}`;
     globalSummary.appendChild(div);
     //console.log(data);
     for(country of countrys){
@@ -60,6 +60,6 @@ const displayData = (data, length) =>{
                     <h4> Active  : ${dataToday.Active} </h4>
                     <h4> Confirmed  : ${dataToday.Confirmed} </h4>
                     <h4> Death  : ${dataToday.Deaths} </h4>
-                    <h4> Date  : ${dataToday.Date} </h4>`;
+                    <h4> Date  : ${dataToday.Date.slice(0, 10)} </h4>`;
     updateSection.appendChild(div);
 };
