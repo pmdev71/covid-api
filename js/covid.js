@@ -57,10 +57,9 @@ const displayData = (data, length) =>{
     const dataToday = (data[length-1]);
     const div = document.createElement('div');
     div.innerHTML = `<h3> Country  : ${dataToday.Country} </h3>
-    <h4> Active  : ${dataToday.Active} </h4>
-    <h4> Confirmed  : ${dataToday.Confirmed} </h4>
-    <h4> Death  : ${dataToday.Deaths} </h4>
-    <h4> Date  : ${dataToday.Date} </h4>`;
-
+                    <h4> Active  : ${dataToday.Active} </h4>
+                    <h4> Confirmed  : ${dataToday.Confirmed} </h4>
+                    <h4> Death  : ${dataToday.Deaths} </h4>
+                    <h4> Date  : ${dataToday.Date} </h4>`;
     updateSection.appendChild(div);
 };
