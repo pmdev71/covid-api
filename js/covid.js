@@ -1,22 +1,39 @@
 const Selector = document.getElementById('selector');
 // load all country name using api
 const loadCountryName = () => {
-    fetch('https://api.covid19api.com/countries')
+    fetch('https://api.covid19api.com/summary')
     .then(res => res.json())
-    .then(data => viewCountry(data));
+    .then(data => viewCountry(data.Countries, data.Global));
 }
-// push all country name and value under select tag as option tag
-viewCountry = (data) => {
+// push all country name and value under select tag as option tag and make table
+viewCountry = (countrys, globaldata) => {
+    console.log(globaldata);
+    const globalSummary = document.getElementById('global-summary');
+    const div = document.createElement('div');
+    div.innerHTML =`<h3> New Confirmed  : ${globaldata.NewConfirmed} </h3>
+                    <h4> New Death  : ${globaldata.NewDeaths} </h4>
+                    <h4> Total Confirmed  : ${globaldata.TotalConfirmed} </h4>
+                    <h4> Total Death  : ${globaldata.TotalDeaths} </h4>
+                    <h4> Date  : ${globaldata.Date}`;
+    globalSummary.appendChild(div);
     //console.log(data);
-    for(country of data){
+    for(country of countrys){
         const option = document.createElement('option');
+        const tableBody = document.getElementById('table-body');
+        const tr = document.createElement('tr');
+
         option.value = `${country.Country}`;
         option.innerText = `${country.Country}`;
-        Selector.appendChild(option); 
+        Selector.appendChild(option);
+
+        tr.innerHTML = `<th scope="row">${country.Country}</th>
+                        <td>${country.TotalConfirmed}</td>
+                        <td>${country.TotalDeaths}</td>
+                        <td>${country.TotalRecovered}</td>`;               
+        tableBody.appendChild(tr); 
     } 
 };
 loadCountryName();
-
 
 // btn click event listener 
 const Btn = document.getElementById('btn');
