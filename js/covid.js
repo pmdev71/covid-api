@@ -1,4 +1,4 @@
-const loadCountryName = () =>{
+/* const loadCountryName = () => {
     fetch('https://api.covid19api.com/countries')
     .then(res => res.json())
     .then(data => viewCountry(data));
@@ -6,30 +6,33 @@ const loadCountryName = () =>{
 
 viewCountry = (data) => {
     //console.log(data);
+    
     for(country of data){
-        console.log(country.Country);
+        //console.log(country.Country);
+        const div = document.createElement('div');
+        div.innerHTML =`<option value='${country.Country}'>${country.Country}</option>`;
+        console.log(`<option value='${country.Country}'>${country.Country}</option>`);
+        Selector.appendChild(div); 
     }
-}
-loadCountryName();
+    
+};
+loadCountryName(); */
 
 
 
 const Selector = document.getElementById('selector');
+
 const Btn = document.getElementById('btn');
 Btn.addEventListener('click',function(event){
-            //event.preventDefault();
-            // show the selected index
             loadCovid(Selector.value);
 });
 
-
-const loadCovid = (countryName = 'bangladesh') => {
+const loadCovid = (countryName = 'Bangladesh') => {
     const api = `https://api.covid19api.com/live/country/${countryName}`;
     fetch(api)
     .then(res => res.json())
     .then(data => displayData(data, data.length));
 };
-
 
 const displayData = (data, length) =>{
     const updateSection = document.getElementById('update-section');
@@ -44,6 +47,4 @@ const displayData = (data, length) =>{
     <h4> Date  : ${dataToday.Date} </h4>`;
 
     updateSection.appendChild(div);
-
-  
 };
