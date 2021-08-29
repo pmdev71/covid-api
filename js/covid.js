@@ -37,7 +37,7 @@ loadCountryName();
 
 // btn click event listener 
 const Btn = document.getElementById('btn');
-Btn.addEventListener('click',function(event){
+Btn.addEventListener('click',function(){
             loadCovid(Selector.value);
 });
 
