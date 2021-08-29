@@ -1,4 +1,4 @@
-/* const loadCountryName = () => {
+const loadCountryName = () => {
     fetch('https://api.covid19api.com/countries')
     .then(res => res.json())
     .then(data => viewCountry(data));
@@ -8,15 +8,13 @@ viewCountry = (data) => {
     //console.log(data);
     
     for(country of data){
-        //console.log(country.Country);
-        const div = document.createElement('div');
-        div.innerHTML =`<option value='${country.Country}'>${country.Country}</option>`;
-        console.log(`<option value='${country.Country}'>${country.Country}</option>`);
-        Selector.appendChild(div); 
-    }
-    
+        const option = document.createElement('option');
+        option.value = `${country.Country}`;
+        option.innerText = `${country.Country}`;
+        Selector.appendChild(option); 
+    } 
 };
-loadCountryName(); */
+loadCountryName();
 
 
 
@@ -27,7 +25,7 @@ Btn.addEventListener('click',function(event){
             loadCovid(Selector.value);
 });
 
-const loadCovid = (countryName = 'Bangladesh') => {
+const loadCovid = (countryName) => {
     const api = `https://api.covid19api.com/live/country/${countryName}`;
     fetch(api)
     .then(res => res.json())
