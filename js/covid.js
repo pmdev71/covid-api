@@ -1,12 +1,13 @@
+const Selector = document.getElementById('selector');
+// load all country name using api
 const loadCountryName = () => {
     fetch('https://api.covid19api.com/countries')
     .then(res => res.json())
     .then(data => viewCountry(data));
 }
-
+// push all country name and value under select tag as option tag
 viewCountry = (data) => {
     //console.log(data);
-    
     for(country of data){
         const option = document.createElement('option');
         option.value = `${country.Country}`;
@@ -17,14 +18,13 @@ viewCountry = (data) => {
 loadCountryName();
 
 
-
-const Selector = document.getElementById('selector');
-
+// btn click event listener 
 const Btn = document.getElementById('btn');
 Btn.addEventListener('click',function(event){
             loadCovid(Selector.value);
 });
 
+//load covid info using api, country name from delector value property
 const loadCovid = (countryName) => {
     const api = `https://api.covid19api.com/live/country/${countryName}`;
     fetch(api)
@@ -32,6 +32,7 @@ const loadCovid = (countryName) => {
     .then(data => displayData(data, data.length));
 };
 
+// display covid info by selected country name
 const displayData = (data, length) =>{
     const updateSection = document.getElementById('update-section');
     updateSection.textContent = '';
