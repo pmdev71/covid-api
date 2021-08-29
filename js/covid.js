@@ -37,7 +37,7 @@ const loadCovid = (countryName = 'Bangladesh') => {
 const displayData = (data, length) =>{
     const updateSection = document.getElementById('update-section');
     updateSection.textContent = '';
-    console.log(data[length-1]);
+    //console.log(data[length-1]);
     const dataToday = (data[length-1]);
     const div = document.createElement('div');
     div.innerHTML = `<h3> Country  : ${dataToday.Country} </h3>
